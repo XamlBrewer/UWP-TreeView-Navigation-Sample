@@ -3,5 +3,44 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:XamlBrewer.Uwp.TreeViewNavigation">
-
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.ThemeDictionaries>
+                <!-- AccentColor overrides -->
+                <!-- Shades of OrangeRed -->
+                <ResourceDictionary x:Key="Default">
+                    <Color x:Key="SystemAccentColor">#ff4500</Color>
+                    <Color x:Key="SystemAccentColorLight1">#ff4500</Color>
+                    <Color x:Key="SystemAccentColorLight2">#ff8f66</Color>
+                    <Color x:Key="SystemAccentColorLight3">#b33000</Color>
+                    <Color x:Key="SystemAccentColorDark1">#ff4500</Color>
+                    <Color x:Key="SystemAccentColorDark2">#ff8f66</Color>
+                    <Color x:Key="SystemAccentColorDark3">#b33000</Color>
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="Dark">
+                    <Color x:Key="SystemAccentColor">#ff4500</Color>
+                    <Color x:Key="SystemAccentColorLight1">#ff4500</Color>
+                    <Color x:Key="SystemAccentColorLight2">#ff8f66</Color>
+                    <Color x:Key="SystemAccentColorLight3">#b33000</Color>
+                    <Color x:Key="SystemAccentColorDark1">#ff4500</Color>
+                    <Color x:Key="SystemAccentColorDark2">#ff8f66</Color>
+                    <Color x:Key="SystemAccentColorDark3">#b33000</Color>
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="Light">
+                    <Color x:Key="SystemAccentColor">#ff4500</Color>
+                    <Color x:Key="SystemAccentColorLight1">#ff4500</Color>
+                    <Color x:Key="SystemAccentColorLight2">#ff8f66</Color>
+                    <Color x:Key="SystemAccentColorLight3">OrangeRed</Color>
+                    <Color x:Key="SystemAccentColorDark1">#ff4500</Color>
+                    <Color x:Key="SystemAccentColorDark2">#ff8f66</Color>
+                    <Color x:Key="SystemAccentColorDark3">#b33000</Color>
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- Theme colors and icons -->
+                <ResourceDictionary Source="Services/Icons/Icons.xaml" />
+                <ResourceDictionary Source="Services/Theming/Theme.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
 </Application>
