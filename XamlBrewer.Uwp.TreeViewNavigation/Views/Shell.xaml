@@ -500,9 +500,11 @@
                               ItemInvoked="TreeView_ItemInvoked"
                               Style="{StaticResource TreeViewStyle1}" />
                     <!-- Command Bar -->
-                    <StackPanel Grid.Row="1"
-                                Orientation="Horizontal"
-                                Background="Transparent">
+                    <CommandBar DefaultLabelPosition="Right"
+                                Grid.Row="1"
+                                Background="Transparent"
+                                HorizontalAlignment="Left"
+                                FontFamily="Segoe UI">
                         <AppBarButton Icon="Setting"
                                       Label="Settings"
                                       Foreground="MidnightBlue" />
@@ -512,7 +514,7 @@
                                 <FontIcon Glyph="&#xE946;" />
                             </AppBarButton.Icon>
                         </AppBarButton>
-                    </StackPanel>
+                    </CommandBar>
                 </Grid>
             </SplitView.Pane>
             <SplitView.Content>
