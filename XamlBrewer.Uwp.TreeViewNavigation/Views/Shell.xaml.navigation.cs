@@ -3,17 +3,14 @@ using System;
 using System.Collections.ObjectModel;
 using Windows.UI.Core;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 using XamlBrewer.Uwp.TreeViewNavigation.Views;
 
 namespace XamlBrewer.Uwp.TreeViewNavigation
 {
     public sealed partial class Shell : Page
     {
-        private ObservableCollection<NavigationMenuItem> MainMenu
-        {
-            get
-            {
-                return new ObservableCollection<NavigationMenuItem>
+        private ObservableCollection<NavigationMenuItem> MainMenu => new ObservableCollection<NavigationMenuItem>
                 {
                     new NavigationMenuItem
                     {
@@ -122,8 +119,6 @@ namespace XamlBrewer.Uwp.TreeViewNavigation
                         }
                     }
                 };
-            }
-        }
 
         /// <summary>
         /// Navigates to the specified source page type.
@@ -182,11 +177,9 @@ namespace XamlBrewer.Uwp.TreeViewNavigation
         /// </summary>
         private void TreeView_ItemInvoked(TreeView sender, TreeViewItemInvokedEventArgs args)
         {
-            var node = args.InvokedItem as TreeViewNode;
-            if (node != null)
+            if (args.InvokedItem is TreeViewNode node)
             {
-                var menuItem = node.Content as NavigationMenuItem;
-                if (menuItem != null)
+                if (node.Content is NavigationMenuItem menuItem)
                 {
                     var target = menuItem.NavigationDestination;
                     if (target != null)
@@ -195,6 +188,16 @@ namespace XamlBrewer.Uwp.TreeViewNavigation
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// Makes the TreeView lose its selection when there is no corresponding main menu item.
+        /// </summary>
+        /// <remarks>But I don't know why...</remarks>
+        private void SplitViewFrame_OnNavigated(object sender, NavigationEventArgs e)
+        {
+            NavigationTree.SelectionMode = TreeViewSelectionMode.None;
+            NavigationTree.SelectionMode = TreeViewSelectionMode.Single;
         }
     }
 }
