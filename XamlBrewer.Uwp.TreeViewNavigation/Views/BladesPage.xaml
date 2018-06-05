@@ -1,0 +1,25 @@
+﻿<Page x:Class="XamlBrewer.Uwp.TreeViewNavigation.Views.BladesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:XamlBrewer.Uwp.TreeViewNavigation.Views"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d"
+      FontFamily="Segoe UI">
+
+    <Grid Margin="0">
+        <!--<Grid.Background>
+            <SolidColorBrush Color="{StaticResource PageBackgroundColor}"
+                             Opacity=".5" />
+        </Grid.Background>-->
+        <TextBlock FontSize="36"
+                   Margin="20"
+                   Foreground="{StaticResource PageTitleBrush}"
+                   FontFamily="Segoe UI">Blades</TextBlock>
+        <TextBlock x:Name="SubTitle"
+                   HorizontalAlignment="Right"
+                   FontSize="36"
+                   Margin="20"
+                   Foreground="{StaticResource PageTitleBrush}" />
+    </Grid>
+</Page>

@@ -37,11 +37,11 @@
                      Color="DodgerBlue" />
 
     <!-- Splitview Content -->
-    <Color x:Key="PageBackgroundColor">#ffebf5ee</Color>
+    <Color x:Key="PageBackgroundColor">Gainsboro</Color>
     <SolidColorBrush x:Key="PageBackgroundBrush"
-                     Color="#FF262C3A" />
+                     Color="Gainsboro" />
     <SolidColorBrush x:Key="PageTitleBrush"
-                     Color="DodgerBlue" />
+                     Color="LightCyan" />
     <SolidColorBrush x:Key="PageForegroundBrush"
                      Color="#FF0E0E3F" />
     <SolidColorBrush x:Key="PanelBackgroundBrush"

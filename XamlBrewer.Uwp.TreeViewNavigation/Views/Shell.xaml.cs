@@ -1,11 +1,10 @@
 ﻿using Mvvm;
-using System.Collections.ObjectModel;
 using Windows.ApplicationModel.Core;
 using Windows.UI;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Navigation;
+using XamlBrewer.Uwp.TreeViewNavigation.Views;
 
 namespace XamlBrewer.Uwp.TreeViewNavigation
 {
@@ -16,7 +15,6 @@ namespace XamlBrewer.Uwp.TreeViewNavigation
             // Blends the app into the title bar.
             var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
             coreTitleBar.ExtendViewIntoTitleBar = true;
-
             var titleBar = ApplicationView.GetForCurrentView().TitleBar;
             titleBar.ButtonBackgroundColor = Colors.Transparent;
             titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
@@ -24,128 +22,27 @@ namespace XamlBrewer.Uwp.TreeViewNavigation
 
             this.InitializeComponent();
 
-            // AppTitleBar.Height = coreTitleBar.Height;
+            // Update the title bar when the back button (dis)appears or resizes.
+            Window.Current.CoreWindow.SizeChanged += (s, e) => UpdateAppTitle();
+            coreTitleBar.LayoutMetricsChanged += (s, e) => UpdateAppTitle();
+
+            // Show the system back button.
+            EnableBackButton();
+
             Window.Current.SetTitleBar(AppTitleBar);
 
-            foreach (var item in MainMenu)
-            {
-                NavigationTree.RootNodes.Add(item.AsTreeViewNode());
-            }
+            PopulateTreeView();
         }
 
-        private ObservableCollection<NavigationMenuItem> MainMenu
+        /// <summary>
+        /// Updates the title bar when the back button (dis)appears or resizes.
+        /// </summary>
+        private void UpdateAppTitle()
         {
-            get
-            {
-                return new ObservableCollection<NavigationMenuItem>
-                {
-                    new NavigationMenuItem
-                    {
-                        Text = "Edged Weapons",
-                        Children = new
-                        ObservableCollection<MenuItem>
-                        {
-                            new NavigationMenuItem
-                            {
-                                Text = "Arakh"
-                            },
-                            new NavigationMenuItem
-                            {
-                                Text = "Dragonglass"
-                            },
-                            new NavigationMenuItem
-                            {
-                                Text = "Ice blade"
-                            },
-                            new NavigationMenuItem
-                            {
-                                Text = "Valyrian Steel",
-                                Children = new ObservableCollection<MenuItem>
-                                {
-                                    new NavigationMenuItem
-                                    {
-                                        Text = "Heartsbane"
-                                    },
-                                    new NavigationMenuItem
-                                    {
-                                        Text = "Longclaw"
-                                    },
-                                    new NavigationMenuItem
-                                    {
-                                        Text = "Oathkeeper"
-                                    },
-                                    new NavigationMenuItem
-                                    {
-                                        Text = "Widow's Wail"
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    new NavigationMenuItem
-                    {
-                        Text = "Poison",
-                        Children = new ObservableCollection<MenuItem>
-                        {
-                            new NavigationMenuItem
-                            {
-                                Text = "Tears of Lys"
-                            },
-                            new NavigationMenuItem
-                            {
-                                Text = "The Long Farewell"
-                            },
-                            new NavigationMenuItem
-                            {
-                                Text = "The Strangler"
-                            },
-                            new NavigationMenuItem
-                            {
-                                Text = "Wolfbane"
-                            }
-                        }
-                    },
-                    new NavigationMenuItem
-                    {
-                        Text = "Weapons of Mass Destruction",
-                        Children = new ObservableCollection<MenuItem>
-                        {
-                            new NavigationMenuItem
-                            {
-                                Text = "Dragons",
-                                Children = new ObservableCollection<MenuItem>
-                                {
-                                    new NavigationMenuItem
-                                    {
-                                        Text = "Balerion"
-                                    },
-                                    new NavigationMenuItem
-                                    {
-                                        Text = "Drogon"
-                                    },
-                                    new NavigationMenuItem
-                                    {
-                                        Text = "Rhaegal"
-                                    },
-                                    new NavigationMenuItem
-                                    {
-                                        Text = "Viserion"
-                                    }
-                                }
-                            },
-                            new NavigationMenuItem
-                            {
-                                Text = "WildFire"
-                            }
-                        }
-                    }
-                };
-            }
-        }
-
-        private void SplitViewFrame_OnNavigated(object sender, NavigationEventArgs e)
-        {
-
+            var full = (ApplicationView.GetForCurrentView().IsFullScreenMode);
+            var left = (full ? 0 : CoreApplication.GetCurrentView().TitleBar.SystemOverlayLeftInset);
+            HamburgerButton.Margin = new Thickness(left, 0, 0, 0);
+            AppTitle.Margin = new Thickness(left + HamburgerButton.Width + 12, 8, 0, 0);
         }
 
         /// <summary>
@@ -156,9 +53,14 @@ namespace XamlBrewer.Uwp.TreeViewNavigation
             ShellSplitView.IsPaneOpen = !ShellSplitView.IsPaneOpen;
         }
 
-        private void TreeView_ItemInvoked(TreeView sender, TreeViewItemInvokedEventArgs args)
+        private void SettingsButton_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
+            Navigate(typeof(SettingsPage));
+        }
 
+        private void AboutButton_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            Navigate(typeof(AboutPage));
         }
     }
 }
