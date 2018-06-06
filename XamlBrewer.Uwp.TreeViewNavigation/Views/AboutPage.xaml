@@ -1,12 +1,10 @@
-﻿<Page
-    x:Class="XamlBrewer.Uwp.TreeViewNavigation.Views.AboutPage"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:XamlBrewer.Uwp.TreeViewNavigation.Views"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    >
+﻿<Page x:Class="XamlBrewer.Uwp.TreeViewNavigation.Views.AboutPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:XamlBrewer.Uwp.TreeViewNavigation.Views"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d">
 
     <Grid Margin="0">
         <!--<Grid.Background>
@@ -17,5 +15,12 @@
                    Margin="20"
                    Foreground="{StaticResource PageTitleBrush}"
                    FontFamily="Segoe UI">About</TextBlock>
+        <TextBlock Foreground="MidnightBlue"
+                   FontSize="18"
+                   Margin="20 80">
+            <Run>Background image by </Run>
+            <Hyperlink NavigateUri="https://88grzes.deviantart.com/art/The-Watchers-on-the-Wall-459665469">Grzegorz Rutkowski (88grzes)</Hyperlink>
+            <Run>.</Run>
+        </TextBlock>
     </Grid>
 </Page>

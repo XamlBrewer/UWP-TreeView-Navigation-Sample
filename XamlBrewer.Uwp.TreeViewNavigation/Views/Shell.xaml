@@ -498,7 +498,8 @@
                     <!-- Navigation Tree -->
                     <TreeView x:Name="NavigationTree"
                               ItemInvoked="TreeView_ItemInvoked"
-                              Style="{StaticResource TreeViewStyle1}" />
+                              Style="{StaticResource TreeViewStyle1}"
+                              FontFamily="Segoe UI" />
                     <!-- Command Bar -->
                     <CommandBar DefaultLabelPosition="Right"
                                 Grid.Row="1"

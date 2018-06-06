@@ -96,7 +96,6 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Mvvm\BindableBase.cs" />
-    <Compile Include="Mvvm\DelegateCommand.cs" />
     <Compile Include="Services\Icons\Icon.cs" />
     <Compile Include="Services\Navigation\NavigationMenuItemExtensions.cs" />
     <Compile Include="Views\MassDestructionPage.xaml.cs">
@@ -120,7 +119,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\MenuItem.cs" />
     <Compile Include="Services\Navigation\NavigationMenuItem.cs" />
-    <Compile Include="Views\Shell.xaml.navigation.cs" >
+    <Compile Include="Views\Shell.xaml.navigation.cs">
       <DependentUpon>Shell.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
