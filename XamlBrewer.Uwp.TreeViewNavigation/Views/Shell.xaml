@@ -522,7 +522,6 @@
             </SplitView.Pane>
             <SplitView.Content>
                 <Grid Background="{StaticResource PageBackgroundBrush}">
-                    <!-- Does not seem to work. -->
                     <ParallaxView Source="{Binding ElementName=NavigationTree}"
                                   VerticalShift="100">
                         <!--https://88grzes.deviantart.com/art/The-Watchers-on-the-Wall-459665469-->
